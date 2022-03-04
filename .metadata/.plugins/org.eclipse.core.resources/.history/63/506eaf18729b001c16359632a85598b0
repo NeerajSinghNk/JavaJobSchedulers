@@ -1,0 +1,6 @@
+package simpleQuartzExample;
+import org.quartz.Job;
+
+public class QuartzJob implements Job{
+
+}

@@ -1,0 +1,19 @@
+import org.quartz.TriggerBuilder;
+import org.quartz.impl.StdSchedulerFactory;
+import org.quartz.JobBuilder;
+import org.quartz.JobDetail;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
+import org.quartz.Trigger;
+public class QuartzMain {
+
+	public static void main(String[] args) throws SchedulerException {
+	
+		JobDetail job =  JobBuilder.newJob(QuartzJob.class).build();
+		Trigger t1 =  TriggerBuilder.newTrigger().withIdentity("SimpleTrigger").startNow();
+		Scheduler sch = StdSchedulerFactory.getDefaultScheduler();
+		sch.start();
+		sch.scheduleJob(job, t1);
+	}
+
+}
